@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Ecole;
+
+/**
+ * Eleve
+ *
+ * @ORM\Table(name="eleve")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EleveRepository")
+ */
+class Eleve
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=100)
+     */
+    private $nom;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateNaissance", type="date", nullable=true)
+     */
+    private $dateNaissance;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=100)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse", type="text")
+     */
+    private $adresse;
+
+
+	/**
+	 * @var Ecole $ecole
+	 *
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ecole", inversedBy="eleves")
+	 */
+	private $ecole;
+}
